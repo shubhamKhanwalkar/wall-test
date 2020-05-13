@@ -1,56 +1,80 @@
-var w1,w2,w3,b1,b2,b3;
-
+var b1,b2,b3;
+var w1,w2,w3,b_speed,b_speed1,b_speed2;
+var  b_weight1,b_weight2,b_weight3;
+var thickness1,thickness2,thickness3;
 
 function setup() {
   createCanvas(1200,400);
-  w1 = createSprite(400, 70,5, 50);
-  b1 = createSprite(30,70,5,5);
- 
-  w2 = createSprite(400, 200,5, 50);
- b2 = createSprite(30,200,5,5);
+  thickness1 = random (22,83);
+  thickness2 = random (22,83);
+  thickness3 = random (22,83);
+  b1 = createSprite(20, 70, 20, 20);
+  b2 = createSprite(20, 200, 20, 20);
+  b3 = createSprite(20, 330, 20, 20);
+  w1 = createSprite(1200,70,thickness1,50);
+  w2 = createSprite(1200,200,thickness2,50);
+  w3 = createSprite(1200,330,thickness3,50);
+  b_speed1 = random (223,321);
+  b_speed2 = random (223,321);
+  b_speed = random (223,321);
 
- w3 = createSprite(400,330,5,50);
- b3 = createSprite(30,330,5,5);
+  b_weight = random (30,52);
+  b_weight1 = random (30,52);
+  b_weight2 = random (30,52);
+  
+
 }
 
 function draw() {
   background(255,255,255);  
-  if(mousePressedOver(b1))
-  {
-    b1.velocityX = 25;
+  drawSprites()
+ 
+  if (mousePressedOver(b1)) {
+    b1.velocityX = b_speed;
+  }
+  if (mousePressedOver(b2)) {
+    b2.velocityX = b_speed1 ;
+  }
+  if (mousePressedOver(b3)) {
+    b3.velocityX =  b_speed2;
   }
 
-  if(mousePressedOver(b2))
-  {
-    b2.velocityX = 25;
-  }
-
-  if(mousePressedOver(b3))
-  {
-    b3.velocityX = 25;
-  }
+ 
+ 
   
-  b2.collide(w2);
+ 
+  if (Collide (b1,w1)){
+    var damage = 0.5 * b_weight * b_speed * b_speed / (thickness1*thickness1*thickness1);
+    if (damage>10) {
+      w1.shapeColor = color (255,0,0);
+      b1.velocityX = 0;  
+    }
+    if (damage<10) {
+      w1.shapeColor = color (0,255,0);
+    }
+    }
 
-  b3.bounceOff(w3);
-
- if (b1.x > 380 && b2.x > 380 && b3.x < 0 ) {
-  text ("cannot be used ",100,70);
-  text ("can  be used",100,200);
-  text ("best",100,330);  
-
+if (Collide (b2,w2)){
+var damage = 0.5 * b_weight1 * b_speed1 * b_speed1 / (thickness2*thickness2*thickness2);
+if (damage>10) {
+  w2.shapeColor = color (255,0,0);
+}
+if (damage<10) {
+  w2.shapeColor = color (0,255,0);
+  b2.velocityX = 0;  
+}
 }
 
-drawSprites();
-}
 
 
-
-
-
-
-
-
-
-
-
+  if (Collide (b3,w3)){
+    var damage = 0.5 * b_weight2 * b_speed2* b_speed2 / (thickness3*thickness3*thickness3);
+    if (damage>10) {
+      w3.shapeColor = color (255,0,0);
+    }
+    if (damage<10) {
+      w3.shapeColor = color (0,255,0);
+      b3.velocityX = 0;  
+    }
+    }
+  }
