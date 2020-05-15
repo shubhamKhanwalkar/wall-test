@@ -62,9 +62,9 @@ if (damage>10) {
 }
 if (damage<10) {
   w2.shapeColor = color (0,255,0);
-  b2.velocityX = 0;  
+  b2.velocityX = 0;}  
   text (damage,100,200);
-}
+
 }
 
 
