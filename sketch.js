@@ -52,6 +52,7 @@ function draw() {
     if (damage<10) {
       w1.shapeColor = color (0,255,0);
     }
+    text (damage,100,70);
     }
 
 if (Collide (b2,w2)){
@@ -62,6 +63,7 @@ if (damage>10) {
 if (damage<10) {
   w2.shapeColor = color (0,255,0);
   b2.velocityX = 0;  
+  text (damage,100,200);
 }
 }
 
@@ -76,5 +78,6 @@ if (damage<10) {
       w3.shapeColor = color (0,255,0);
       b3.velocityX = 0;  
     }
+    text (damage,100,330);
     }
   }
